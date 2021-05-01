@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:必须是接口所在的全路径，(mapper代理)-->
+<mapper namespace="com.bjsxt.mapper.FlowerMapper">
+
+    <!--1. id的名称和接口中方法必须保持一致(好像类似于spring中byname自动注入)
+        2. 给一个类起别名
+        3. 给包起别名，resultType直接是类名首字母小写
+    -->
+    <select id="selectAll" resultType="flower">
+
+          SELECT  *  from  flower
+
+    </select>
+
+    <insert id="insert">
+
+        insert into flower values (DEFAULT ,#{name},#{price},#{production})
+
+    </insert>
+<!--传递多个值默认参数类型就是map-->
+    <select id="selectOne" parameterType="map" resultType="flower">
+
+         SELECT  *  from  flower  where  id=#{param1} and name=#{param2}
+
+    </select>
+
+    <select id="selectOne2" resultType="flower">
+
+        SELECT  *  from  flower  where  id=#{uu} and name=#{yy}
+
+    </select>
+<!--    参数是一个，且这个参数是flower类型可以直接用属性传值-->
+    <select id="selectOne3" resultType="flower">
+
+        SELECT  *  from  flower  where   id =#{id} and  name=#{name}
+
+    </select>
+
+    <select id="selectOne4" resultType="flower">
+
+         SELECT  *  from  flower  where  id=#{param1.id} and  name=#{param2.name}
+
+    </select>
+
+
+</mapper>

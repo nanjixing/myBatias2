@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjsxt.mapper.FlowerMapper3">
+
+     <!--添加操作
+         int    insert(Flower  f);
+     -->
+    <insert id="insert" parameterType="flower">
+
+        insert into  flower  values (DEFAULT ,#{name},#{price},#{production})
+
+    </insert>
+
+
+
+    <!--修改操作
+       int   update(Flower  f);
+    -->
+    <update id="update">
+
+          UPDATE   flower   set  price=#{price},name=#{name}  where  id =#{id}
+
+    </update>
+
+    <!--删除操作
+        int   delete(int  a,int b,int c);
+    -->
+    <delete id="delete">
+
+         <!--param1 :第一个参数-->
+         DELETE    from  flower  where  id =#{param1}
+
+          <!--arg0 :代表的是下标为0 的参数-->
+          <!-- DELETE   from  flower  WHERE   id=#{arg0} -->
+
+    </delete>
+    
+
+</mapper>

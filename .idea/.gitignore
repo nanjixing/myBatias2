@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\360MoveData\Users\xing\Desktop\Projects\3-JAVAEE-web开发\02_MyBatis_第二天【尚学堂.百战程序员】\源码\mybatis2\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

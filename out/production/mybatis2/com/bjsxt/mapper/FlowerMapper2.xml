@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjsxt.mapper.FlowerMapper2">
+
+    <!-- Flower  selectOne(int  id)-->
+    <select id="selectOne" resultType="flower" parameterType="int">
+
+          SELECT  *  from  flower   where   id=#{param1}
+
+    </select>
+
+    <!--Flower  selectOne(Flower  f)-->
+    <select id="selectOne2" resultType="flower" parameterType="flower">
+
+          SELECT  *  from   flower  where id =#{id}  and  name=#{name}
+
+    </select>
+    <!--Flower  selectOne(Map<>  map)，在select语句中id和name注意要和put的关键字一致-->
+
+    <select id="selectOne3" resultType="flower" parameterType="map">
+
+         select * from   flower  where  id  =#{a}  and  name=#{b}
+
+    </select>
+
+</mapper>

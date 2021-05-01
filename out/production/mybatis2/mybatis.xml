@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--dtd文件：这个是一个网络上的东西，可以复制到浏览器下载该文件，然后放到电脑中的某个目录当中（避免中文），
+然后修改地址为本地地址，在setting中找language&。。。找 schemas and dtds点击右边+号，选择位置就可以了注意第一行不要改-->
+
+<!--注意配置的标签是有顺序的-->
+<configuration>
+<!--        读取属性文件，-->
+        <properties resource="jdbc.properties"></properties>
+
+        <!--指定mybatis中日志类型-->
+        <settings>
+            <setting name="logImpl" value="LOG4J"/>
+        </settings>
+
+        <!--给实体类配置别名 ，对应到flowermapper中resultType       -->
+       <typeAliases>
+        <!--           <package name="com.bjsxt.entity.Flower"></package>-->   <!-- 类别名-->
+            <package name="com.bjsxt.entity"></package>
+       </typeAliases>
+
+
+       <environments default="mysql">
+
+           <environment id="mysql">
+
+               <transactionManager type="JDBC"></transactionManager>
+
+               <dataSource type="POOLED"><!--这是 JDBC 连接对象的数据源连接池的实现,用来避免创建新的连接实例时必要的初始连接和认证时间。这是一种当前 Web 应用程序用来快速响应请求很流行的方法-->
+<!--                   以属性文件方式配置数据源，方便更新（比如说换数据库），结构更将清晰，首先要读取属性文件，读取属性文件中的值的方式-->
+                   <property name="driver" value="${m_driver}"></property>
+
+                   <property name="url" value="${m_url}"></property>
+
+                   <property name="username" value="${m_uname}"></property>
+
+                   <property name="password" value="${m_pwd}"></property>
+
+               </dataSource>
+           </environment>
+       </environments>
+
+
+    <mappers>
+<!--        <mapper url="类似统一资源定位符，如果是本机地址，在网络中打开的地址"></mapper>-->
+        <mapper resource="com/bjsxt/mapper/FlowerMapper1.xml"></mapper>
+
+        <mapper resource="com/bjsxt/mapper/FlowerMapper2.xml"></mapper>
+
+        <mapper resource="com/bjsxt/mapper/FlowerMapper3.xml"></mapper>
+
+        <mapper resource="com/bjsxt/mapper/FlowerMapper.xml"></mapper>
+
+        <!--首先会找mapper包下的所有的[接口],然后去找和接口的名字相同的XML进行扫描，缺点是一个接口只能对应一个xml文件（还是和spring中有点像）-->
+<!--        <package name="com.bjsxt.mapper"></package>-->
+
+
+    </mappers>
+    
+    
+</configuration>
+
